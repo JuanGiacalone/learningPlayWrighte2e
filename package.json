@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "farm": "npx playwright test tests/unovarpg.spec.ts --project=chromium"
+    "farm": "npx playwright test tests/unovarpg.spec.ts --project=firefox --trace on"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.40.1",
+    "@playwright/test": "^1.42.1",
     "@types/node": "^20.10.4"
   },
   "dependencies": {
