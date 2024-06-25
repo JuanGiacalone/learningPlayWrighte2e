@@ -17,9 +17,12 @@ Inside that directory, you can run several commands:
     Runs the tests in debug mode.
 
   npx playwright codegen
+
     Auto generate tests with Codegen.
 
-    npx playwright show-report
+Muestra el reporte 
+
+  npx playwright show-report
 
 We suggest that you begin by typing:
 

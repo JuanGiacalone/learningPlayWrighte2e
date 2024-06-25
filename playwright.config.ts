@@ -24,10 +24,13 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
+    baseURL: 'https://thefreerangetester.github.io/sandbox-automation-testing/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    // trace: 'on', hace trace para todas las pruebas, captura todos los logs para todas las pruebas fallen o no
+    // trace: 'retain-on-failure', hace trace para todas las pruebas, captura logs solo para las pruebas fallidas
+    video: 'retain-on-failure',
   },
 
   /* Configure projects for major browsers */
@@ -46,6 +49,42 @@ export default defineConfig({
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
     },
+
+    /* Configure projects for major browsers */
+    {
+      name: 'Computadora',
+      testMatch: "/*.spec.ts",
+      use: { ...devices['Desktop Chrome'] },
+    },
+
+    {
+      name: 'Iphone',
+      testMatch: "/*.spec.ts",
+      use: { ...devices['iPhone 12'] },
+    },
+
+    {
+      name: 'iPad',
+      testMatch: "/*.spec.ts",
+      use: { ...devices['iPad (gen 7)'] },
+    },
+
+    {
+      name: 'APITests',
+      testMatch: 'APITest/**/*',
+      use: { 
+        baseURL: 'https://api.github.com',
+        extraHTTPHeaders: {
+          'Accept': 'application/vnd.github.v3+json',
+          'Authorization': `token ${process.env.API_TOKEN}`,
+
+        }
+      },
+    }
+    
+
+
+    // npx playwright test --project=Computadora
 
     /* Test against mobile viewports. */
     // {
